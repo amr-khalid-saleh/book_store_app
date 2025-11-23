@@ -1,3 +1,3 @@
 class ImageManager{
-  static const logo = 'assets/images/logo.svg';
+  static const splashImage = 'assets/images/splash_image.svg';
 }
