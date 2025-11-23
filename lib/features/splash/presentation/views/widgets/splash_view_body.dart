@@ -20,7 +20,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   @override
   void initState() {
     super.initState();
-    InitSlidingAnimation();
+    initSlidingAnimation();
     navigationToHome();
   }
 
@@ -46,7 +46,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     );
   }
 
-  void InitSlidingAnimation() {
+  void initSlidingAnimation() {
     animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
