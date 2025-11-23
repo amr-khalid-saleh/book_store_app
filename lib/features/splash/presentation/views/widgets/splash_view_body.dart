@@ -1,26 +1,51 @@
 import 'package:book_store/core/utils/image_manager.dart';
+import 'package:book_store/features/splash/presentation/views/widgets/sliding_animation_text.dart';
 import 'package:flutter/material.dart';
 
-class SplashViewBody extends StatelessWidget {
+class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
 
   @override
+  State<SplashViewBody> createState() => _SplashViewBodyState();
+}
+
+class _SplashViewBodyState extends State<SplashViewBody>
+    with SingleTickerProviderStateMixin {
+  late AnimationController animationController;
+  late Animation<Offset> slidingAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    );
+    slidingAnimation = Tween<Offset>(
+      begin: Offset(0, 3),
+      end: Offset.zero,
+    ).animate(animationController);
+    animationController.forward();
+  }
+  @override
+  void dispose() {
+    super.dispose();
+    animationController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Image.asset(ImageManager.logo),
-        const SizedBox(height: 32),
-        const Text(
-          'Buy your favourite book from here.',
-          textAlign: TextAlign.left,
-          style: TextStyle(
-            fontSize: 36,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Image.asset(ImageManager.logo),
+          const SizedBox(height: 32),
+          SlidingAnimationText(slidingAnimation: slidingAnimation),
+        ],
+      ),
     );
   }
 }
