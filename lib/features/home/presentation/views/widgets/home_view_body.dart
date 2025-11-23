@@ -1,4 +1,5 @@
 import 'package:book_store/core/utils/text_style_manager.dart';
+import 'package:book_store/features/home/presentation/views/widgets/best_seller_item.dart';
 import 'package:book_store/features/home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:book_store/features/home/presentation/views/widgets/trending_book_list_view.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,8 @@ class HomeViewBody extends StatelessWidget {
           TrendingBookListView(),
           SizedBox(height: 44),
           Text('Best Seller', style: TextStyleManager.semiBold20),
+          SizedBox(height: 20),
+          BestSellerItem(),
         ],
       ),
     );
