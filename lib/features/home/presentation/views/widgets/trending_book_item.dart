@@ -11,7 +11,7 @@ class TrendingBookItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           image: const DecorationImage(
-            image: AssetImage(ImageManager.splashImage),
+            image: AssetImage(ImageManager.subtleArtOfNotGivingAFuck),
             fit: BoxFit.fill
           ),
           borderRadius: BorderRadius.circular(16),
