@@ -6,18 +6,15 @@ class TrendingBookItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.28,
-      child: AspectRatio(
-        aspectRatio: 2.7 / 4, //width/height
-        child: Container(
-          decoration: BoxDecoration(
-            image: const DecorationImage(
-              image: AssetImage(ImageManager.splashImage),
-              fit: BoxFit.fill
-            ),
-            borderRadius: BorderRadius.circular(16),
+    return AspectRatio(
+      aspectRatio: 2.7 / 4, //width/height
+      child: Container(
+        decoration: BoxDecoration(
+          image: const DecorationImage(
+            image: AssetImage(ImageManager.splashImage),
+            fit: BoxFit.fill
           ),
+          borderRadius: BorderRadius.circular(16),
         ),
       ),
     );
