@@ -1,0 +1,14 @@
+import 'package:book_store/features/home/presentation/views/home_view.dart';
+import 'package:book_store/features/splash/presentation/views/splash_view.dart';
+import 'package:go_router/go_router.dart';
+
+abstract class AppRouter {
+  static const kHomeView = '/homeView';
+  static final GoRouter route = GoRouter(
+    routes: <RouteBase>[
+      //the frist view your path write only forward slash '/'
+      GoRoute(path: '/', builder: (context, state) => const SplashView()),
+      GoRoute(path: kHomeView, builder: (context, state) => const HomeView()),
+    ],
+  );
+}
