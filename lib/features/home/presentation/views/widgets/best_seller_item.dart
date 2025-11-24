@@ -1,4 +1,5 @@
 import 'package:book_store/core/utils/image_manager.dart';
+import 'package:book_store/core/utils/text_style_manager.dart';
 import 'package:flutter/material.dart';
 
 class BestSellerItem extends StatelessWidget {
@@ -23,7 +24,20 @@ class BestSellerItem extends StatelessWidget {
             ),
           ),
         ),
-        Column(),
+        const SizedBox(width: 30),
+        Column(
+          children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.5,
+              child: Text(
+                'subtle art of not giving a fuck',
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyleManager.regular20,
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }
