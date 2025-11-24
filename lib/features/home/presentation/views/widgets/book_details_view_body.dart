@@ -4,6 +4,7 @@ import 'package:book_store/features/home/presentation/views/widgets/book_action.
 import 'package:book_store/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:book_store/features/home/presentation/views/widgets/custom_book_details_app_bar.dart';
 import 'package:book_store/features/home/presentation/views/widgets/custom_book_image_item.dart';
+import 'package:book_store/features/home/presentation/views/widgets/similar_books_list_view.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
@@ -13,19 +14,19 @@ class BookDetailsViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const CustomBookDetailsAppBar(),
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.6,
+              width: MediaQuery.of(context).size.width * 0.438,
               child: const CustomBookImageItem(),
             ),
-            const SizedBox(height: 42),
+            const SizedBox(height: 44),
             Text(
               'Subtle Art Of Not Giving A Fuck',
-              style: TextStyleManager.semiBold30.copyWith(
+              textAlign: TextAlign.center,
+              style: TextStyleManager.bold24.copyWith(
                 fontFamily: kGTSectraFine,
               ),
             ),
@@ -33,21 +34,33 @@ class BookDetailsViewBody extends StatelessWidget {
             Opacity(
               opacity: 0.7,
               child: Text(
-                'Subtle Art Of Not Giving A Fuck',
+                'Mark Manson',
                 style: TextStyleManager.semiBold18.copyWith(
                   fontWeight: FontWeight.w500,
                   fontStyle: FontStyle.italic,
                 ),
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 10),
             const BookRating(),
-            const SizedBox(height: 36),
-            BookAction(),
+            const SizedBox(height: 38),
+            const BookAction(),
+            const SizedBox(height: 38),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'You can also check out',
+                style: TextStyleManager.regular14.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            SimilarBooksListView(),
+            const SizedBox(height: 40),
           ],
         ),
       ),
     );
   }
 }
-

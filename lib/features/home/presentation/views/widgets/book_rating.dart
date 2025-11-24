@@ -10,8 +10,8 @@ class BookRating extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Icon(Icons.star_rate_rounded, color: Color(0xffffdd4f), size: 16),
-        const SizedBox(width: 8),
+        const Icon(Icons.star_rate_rounded, color: Color(0xffffdd4f), size: 20),
+        const SizedBox(width: 4),
         Text('4.7', style: TextStyleManager.medium16),
         const SizedBox(width: 6),
         Opacity(
