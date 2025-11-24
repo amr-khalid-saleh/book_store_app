@@ -8,7 +8,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Text('Book Store', style: TextStyleManager.regular30),
+        const Text('Book Store', style: TextStyleManager.semiBold30),
         const Spacer(),
         IconButton(onPressed: () {}, icon: Icon(Icons.search, size: 28)),
       ],

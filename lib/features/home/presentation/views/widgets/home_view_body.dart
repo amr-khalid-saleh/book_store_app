@@ -17,7 +17,7 @@ class HomeViewBody extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 24.0,
+                  horizontal: 30.0,
                   vertical: 12.0,
                 ),
                 child: const CustomAppBar(),
@@ -25,7 +25,7 @@ class HomeViewBody extends StatelessWidget {
               TrendingBookListView(),
               const SizedBox(height: 44),
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24.0),
+                padding: EdgeInsets.symmetric(horizontal: 30.0),
                 child: Text('Best Seller', style: TextStyleManager.semiBold18),
               ),
               const SizedBox(height: 20),
@@ -34,7 +34,7 @@ class HomeViewBody extends StatelessWidget {
         ),
         const SliverToBoxAdapter(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            padding: EdgeInsets.symmetric(horizontal: 30.0),
             child: BestSellerListView(),
           ),
         ),

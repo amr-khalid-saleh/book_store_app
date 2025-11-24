@@ -9,9 +9,9 @@ abstract class TextStyleManager {
     fontSize: 20,
     fontWeight: FontWeight.w400,
   );
-  static const TextStyle regular30 = TextStyle(
+  static const TextStyle semiBold30 = TextStyle(
     fontSize: 30,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w600,
   );
   static const TextStyle regular14 = TextStyle(
     fontSize: 14,
