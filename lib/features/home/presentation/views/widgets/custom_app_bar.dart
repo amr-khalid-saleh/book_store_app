@@ -10,7 +10,7 @@ class CustomAppBar extends StatelessWidget {
       children: [
         const Text('Book Store', style: TextStyleManager.regular30),
         const Spacer(),
-        IconButton(onPressed: () {}, icon: Icon(Icons.search, size: 24)),
+        IconButton(onPressed: () {}, icon: Icon(Icons.search, size: 28)),
       ],
     );
   }
