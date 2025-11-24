@@ -13,9 +13,13 @@ class HomeViewBody extends StatelessWidget {
       slivers: [
         SliverToBoxAdapter(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24.0,
+                  vertical: 12.0,
+                ),
                 child: const CustomAppBar(),
               ),
               TrendingBookListView(),
@@ -28,13 +32,20 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
-        //for the list to fill the remaining space
-        const SliverFillRemaining(
+        const SliverToBoxAdapter(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.0),
             child: BestSellerListView(),
           ),
         ),
+        //for the list to fill the remaining space
+        /*const SliverFillRemaining(
+          fillOverscroll: false,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            child: BestSellerListView(),
+          ),
+        ),*/
       ],
     );
   }

@@ -9,9 +9,9 @@ class BookRating extends StatelessWidget {
     return Row(
       children: [
         const Icon(Icons.star_rate_rounded, color: Color(0xffffdd4f)),
-        const SizedBox(height: 6),
+        const SizedBox(width: 6),
         Text('4.7', style: TextStyleManager.medium16),
-        const SizedBox(height: 4),
+        const SizedBox(width: 4),
         Text(
           '(354)',
           style: TextStyleManager.medium16.copyWith(color: Color(0xff707070)),

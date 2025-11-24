@@ -10,6 +10,7 @@ class TrendingBookListView extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.31,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
+        itemCount: 10,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),

@@ -18,7 +18,7 @@ class SlidingAnimationText extends StatelessWidget {
           child: Text(
             'Buy your favourite book from here.',
             textAlign: TextAlign.left,
-            style: TextStyle(fontSize: 32, fontWeight: FontWeight.w800),
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
           ),
         );
       },

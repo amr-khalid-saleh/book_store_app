@@ -38,8 +38,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Image.asset(ImageManager.splashImage),
-          const SizedBox(height: 32),
+          Image.asset(ImageManager.bookLogo, height: 346, fit: BoxFit.cover),
+          const SizedBox(height: 30),
           SlidingAnimationText(slidingAnimation: slidingAnimation),
         ],
       ),
@@ -59,7 +59,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   void navigationToHome() {
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Get.to(
         () => const HomeView(),
         transition: Transition.fade,

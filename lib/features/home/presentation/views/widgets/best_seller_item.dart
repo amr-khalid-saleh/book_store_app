@@ -13,7 +13,7 @@ class BestSellerItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
-          height: 116,
+          height: 124,
           child: AspectRatio(
             aspectRatio: 2.5 / 4, //width/height
             child: Container(
@@ -22,7 +22,7 @@ class BestSellerItem extends StatelessWidget {
                   image: AssetImage(ImageManager.subtleArtOfNotGivingAFuck),
                   fit: BoxFit.fill,
                 ),
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(8),
               ),
             ),
           ),
@@ -35,7 +35,7 @@ class BestSellerItem extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
                 child: Text(
-                  'subtle art of not giving a fuck',
+                  'Subtle Art Of Not Giving A Fuck',
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyleManager.regular20.copyWith(

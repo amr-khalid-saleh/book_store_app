@@ -13,7 +13,6 @@ abstract class TextStyleManager {
   static const TextStyle regular30 = TextStyle(
     fontSize: 30,
     fontWeight: FontWeight.w400,
-    fontFamily: kGTSectraFine,
   );
   static const TextStyle regular14 = TextStyle(
     fontSize: 14,
