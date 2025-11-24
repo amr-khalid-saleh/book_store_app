@@ -1,5 +1,7 @@
+import 'package:book_store/constants.dart';
 import 'package:book_store/core/utils/image_manager.dart';
 import 'package:book_store/core/utils/text_style_manager.dart';
+import 'package:book_store/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 
 class BestSellerItem extends StatelessWidget {
@@ -8,6 +10,7 @@ class BestSellerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
           height: 116,
@@ -25,20 +28,41 @@ class BestSellerItem extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 30),
-        Column(
-          children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.5,
-              child: Text(
-                'subtle art of not giving a fuck',
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyleManager.regular20,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: Text(
+                  'subtle art of not giving a fuck',
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyleManager.regular20.copyWith(
+                    fontFamily: kGTSectraFine,
+                  ),
+                ),
               ),
-            ),
-          ],
+              const SizedBox(height: 4),
+              Text('Mark Manson', style: TextStyleManager.regular14),
+              const SizedBox(height: 4),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '119 \$',
+                    style: TextStyleManager.regular20.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  BookRating(),
+                ],
+              ),
+            ],
+          ),
         ),
       ],
     );
   }
 }
+
