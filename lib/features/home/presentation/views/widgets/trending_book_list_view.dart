@@ -1,4 +1,4 @@
-import 'package:book_store/features/home/presentation/views/widgets/trending_book_item.dart';
+import 'package:book_store/features/home/presentation/views/widgets/custom_book_image_item.dart';
 import 'package:flutter/material.dart';
 
 class TrendingBookListView extends StatelessWidget {
@@ -14,7 +14,7 @@ class TrendingBookListView extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: TrendingBookItem(),
+            child: CustomBookImageItem(),
           );
         },
       ),

@@ -1,8 +1,8 @@
 import 'package:book_store/core/utils/image_manager.dart';
 import 'package:flutter/material.dart';
 
-class TrendingBookItem extends StatelessWidget {
-  const TrendingBookItem({super.key});
+class CustomBookImageItem extends StatelessWidget {
+  const CustomBookImageItem({super.key});
 
   @override
   Widget build(BuildContext context) {
