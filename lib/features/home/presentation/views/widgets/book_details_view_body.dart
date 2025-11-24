@@ -1,5 +1,6 @@
 import 'package:book_store/constants.dart';
 import 'package:book_store/core/utils/text_style_manager.dart';
+import 'package:book_store/features/home/presentation/views/widgets/book_action.dart';
 import 'package:book_store/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:book_store/features/home/presentation/views/widgets/custom_book_details_app_bar.dart';
 import 'package:book_store/features/home/presentation/views/widgets/custom_book_image_item.dart';
@@ -41,9 +42,12 @@ class BookDetailsViewBody extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             const BookRating(),
+            const SizedBox(height: 36),
+            BookAction(),
           ],
         ),
       ),
     );
   }
 }
+
