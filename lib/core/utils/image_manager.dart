@@ -1,3 +1,4 @@
 class ImageManager{
-  static const logo = 'assets/images/logo.svg';
+  static const bookLogo = 'assets/images/book_logo.png';
+  static const subtleArtOfNotGivingAFuck = 'assets/images/subtle_art_of_not_giving_a_fuck.jpg';
 }
