@@ -18,7 +18,10 @@ class HomeRepoImpl implements HomeRepo {
           .toList();
       return Right(booksList);
     } catch (e) {
-      return Left(ServerFailure());
+      if (e is ServerFailure) {
+        return Left(e);
+      }
+      return Left(ServerFailure(e.toString()));
     }
   }
 

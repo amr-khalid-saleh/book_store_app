@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:io';
-import 'package:http/http.dart' as http;
+import 'package:book_store/core/error/failure.dart';
+import 'package:dio/dio.dart';
 
 class ApiServices {
   Future<dynamic> get({required String url, String? token}) async {
@@ -11,13 +11,16 @@ class ApiServices {
     }
     print('url = $url \n token = $token');
     try {
-      http.Response response = await http.get(Uri.parse(url), headers: headers);
-      log(response.body);
-      return jsonDecode(response.body);
-    } on HttpException catch (e) {
-      throw Exception('this error from http exception $e');
+      Response response = await Dio().get(
+        url,
+        options: Options(headers: headers),
+      );
+      log(response.data);
+      return jsonDecode(response.data);
+    } on DioException catch (e) {
+      return ServerFailure.fromDioException(e);
     } catch (e) {
-      throw Exception(e);
+      return ServerFailure(e.toString());
     }
   }
 }
