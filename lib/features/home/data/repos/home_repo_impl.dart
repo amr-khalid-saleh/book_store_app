@@ -10,9 +10,12 @@ class HomeRepoImpl implements HomeRepo {
   HomeRepoImpl({required this.apiServices});
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
+  Future<Either<Failure, List<BookModel>>> fetchTrendingBooks() async {
     try {
-      List<dynamic> books = await apiServices.get(url: '');
+      List<dynamic> books = await apiServices.get(
+        url:
+            'https://www.googleapis.com/books/v1/volumes?Filtering=free-ebooks&Sorting=newest&q=subject:general',
+      );
       List<BookModel> booksList = books
           .map((e) => BookModel.fromJson(e))
           .toList();
@@ -26,5 +29,21 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, BookModel>> fetchTrendingBooks() {}
+  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
+    try {
+      List<dynamic> books = await apiServices.get(
+        url:
+            'https://www.googleapis.com/books/v1/volumes?Filtering=free-ebooks&q=subject:general',
+      );
+      List<BookModel> booksList = books
+          .map((e) => BookModel.fromJson(e))
+          .toList();
+      return Right(booksList);
+    } catch (e) {
+      if (e is ServerFailure) {
+        return Left(e);
+      }
+      return Left(ServerFailure(e.toString()));
+    }
+  }
 }
