@@ -1,31 +1,5 @@
 class BookModel {
-  BookModel({this.items});
-
-  BookModel.fromJson(dynamic json) {
-    if (json['items'] != null) {
-      items = [];
-      json['items'].forEach((v) {
-        items?.add(Items.fromJson(v));
-      });
-    }
-  }
-
-  List<Items>? items;
-
-  BookModel copyWith({List<Items>? items}) =>
-      BookModel(items: items ?? this.items);
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    if (items != null) {
-      map['items'] = items?.map((v) => v.toJson()).toList();
-    }
-    return map;
-  }
-}
-
-class Items {
-  Items({
+  BookModel({
     this.kind,
     this.id,
     this.etag,
@@ -34,7 +8,7 @@ class Items {
     this.saleInfo,
   });
 
-  Items.fromJson(dynamic json) {
+  BookModel.fromJson(dynamic json) {
     kind = json['kind'];
     id = json['id'];
     etag = json['etag'];
@@ -53,22 +27,6 @@ class Items {
   String? selfLink;
   VolumeInfo? volumeInfo;
   SaleInfo? saleInfo;
-
-  Items copyWith({
-    String? kind,
-    String? id,
-    String? etag,
-    String? selfLink,
-    VolumeInfo? volumeInfo,
-    SaleInfo? saleInfo,
-  }) => Items(
-    kind: kind ?? this.kind,
-    id: id ?? this.id,
-    etag: etag ?? this.etag,
-    selfLink: selfLink ?? this.selfLink,
-    volumeInfo: volumeInfo ?? this.volumeInfo,
-    saleInfo: saleInfo ?? this.saleInfo,
-  );
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -98,13 +56,6 @@ class SaleInfo {
   String? country;
   String? saleability;
   bool? isEbook;
-
-  SaleInfo copyWith({String? country, String? saleability, bool? isEbook}) =>
-      SaleInfo(
-        country: country ?? this.country,
-        saleability: saleability ?? this.saleability,
-        isEbook: isEbook ?? this.isEbook,
-      );
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -172,42 +123,6 @@ class VolumeInfo {
   String? infoLink;
   String? canonicalVolumeLink;
 
-  VolumeInfo copyWith({
-    String? title,
-    String? subtitle,
-    List<String>? authors,
-    String? publisher,
-    String? publishedDate,
-    String? description,
-    int? pageCount,
-    String? printType,
-    List<String>? categories,
-    String? maturityRating,
-    bool? allowAnonLogging,
-    String? contentVersion,
-    ImageLinks? imageLinks,
-    String? language,
-    String? previewLink,
-    String? infoLink,
-    String? canonicalVolumeLink,
-  }) => VolumeInfo(
-    title: title ?? this.title,
-    subtitle: subtitle ?? this.subtitle,
-    authors: authors ?? this.authors,
-    publisher: publisher ?? this.publisher,
-    publishedDate: publishedDate ?? this.publishedDate,
-    description: description ?? this.description,
-    pageCount: pageCount ?? this.pageCount,
-    printType: printType ?? this.printType,
-    categories: categories ?? this.categories,
-    maturityRating: maturityRating ?? this.maturityRating,
-    imageLinks: imageLinks ?? this.imageLinks,
-    language: language ?? this.language,
-    previewLink: previewLink ?? this.previewLink,
-    infoLink: infoLink ?? this.infoLink,
-    canonicalVolumeLink: canonicalVolumeLink ?? this.canonicalVolumeLink,
-  );
-
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['title'] = title;
@@ -241,12 +156,6 @@ class ImageLinks {
 
   String? smallThumbnail;
   String? thumbnail;
-
-  ImageLinks copyWith({String? smallThumbnail, String? thumbnail}) =>
-      ImageLinks(
-        smallThumbnail: smallThumbnail ?? this.smallThumbnail,
-        thumbnail: thumbnail ?? this.thumbnail,
-      );
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

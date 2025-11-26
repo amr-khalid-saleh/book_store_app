@@ -21,10 +21,13 @@ class BookStore extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => GeneralBooksCubit(getIt.get<HomeRepoImpl>()),
+          create: (context) =>
+              GeneralBooksCubit(getIt.get<HomeRepoImpl>())..fetchGeneralBooks(),
         ),
         BlocProvider(
-          create: (context) => TrendingBooksCubit(getIt.get<HomeRepoImpl>()),
+          create: (context) =>
+              TrendingBooksCubit(getIt.get<HomeRepoImpl>())
+                ..fetchTrendingBooks(),
         ),
       ],
       child: MaterialApp.router(
