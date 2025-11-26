@@ -12,29 +12,30 @@ class TrendingBookListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TrendingBooksCubit, TrendingBooksState>(
       builder: (context, state) {
-       if (state is TrendingBooksSuccess) {
-         return SizedBox(
-           height: MediaQuery
-               .of(context)
-               .size
-               .height * 0.3,
-           child: ListView.builder(
-             padding: EdgeInsets.zero,
-             scrollDirection: Axis.horizontal,
-             itemCount: 10,
-             itemBuilder: (context, index) {
-               return Padding(
-                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                 child: CustomBookImageItem(),
-               );
-             },
-           ),
-         );
-       }else if (state is TrendingBooksFailure) {
-         return CustomErrorWidget(errMessage: state.errMessage);
-       }else {
-         return const CustomCircularIndicator();
-       }
+        if (state is TrendingBooksSuccess) {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * 0.3,
+            child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              padding: EdgeInsets.zero,
+              scrollDirection: Axis.horizontal,
+              itemCount: state.books.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: CustomBookImageItem(
+                    imageUrl:
+                        state.books[index].volumeInfo.imageLinks.thumbnail,
+                  ),
+                );
+              },
+            ),
+          );
+        } else if (state is TrendingBooksFailure) {
+          return CustomErrorWidget(errMessage: state.errMessage);
+        } else {
+          return const CustomCircularIndicator();
+        }
       },
     );
   }
