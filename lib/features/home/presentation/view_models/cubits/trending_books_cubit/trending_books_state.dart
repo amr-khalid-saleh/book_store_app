@@ -11,11 +11,11 @@ class TrendingBooksLoading extends TrendingBooksState {}
 class TrendingBooksFailure extends TrendingBooksState {
   final String errMessage;
 
-  TrendingBooksFailure(this.errMessage);
+  const TrendingBooksFailure(this.errMessage);
 }
 
 class TrendingBooksSuccess extends TrendingBooksState {
   final List<BookModel> books;
 
-  TrendingBooksSuccess(this.books);
+  const TrendingBooksSuccess(this.books);
 }
