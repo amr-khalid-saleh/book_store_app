@@ -12,9 +12,6 @@ class BookItem extends StatelessWidget {
 
   final BookModel book;
 
-  //final double rating;
-  //final double price;
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -43,7 +40,7 @@ class BookItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: Text(
-                      book.volumeInfo.title!,
+                      book.volumeInfo.title??'',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyleManager.regular20.copyWith(
@@ -53,7 +50,7 @@ class BookItem extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    book.volumeInfo.authors![0],
+                    book.volumeInfo.authors?[0]??'',
                     style: TextStyleManager.regular14,
                   ),
                   const SizedBox(height: 4),
@@ -61,12 +58,12 @@ class BookItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '119 \$',
+                        'Free',
                         style: TextStyleManager.regular20.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      BookRating(rating: null, count: null),
+                      BookRating(rating: 0, count: 0),
                     ],
                   ),
                 ],

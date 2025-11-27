@@ -1,7 +1,6 @@
 import 'package:book_store/core/utils/app_router.dart';
 import 'package:book_store/core/widgets/custom_circular_indicator.dart';
 import 'package:book_store/core/widgets/custom_error_widget.dart';
-import 'package:book_store/features/home/data/models/book_model/book_model.dart';
 import 'package:book_store/features/home/presentation/view_models/cubits/trending_books_cubit/trending_books_cubit.dart';
 import 'package:book_store/features/home/presentation/views/widgets/custom_book_image_item.dart';
 import 'package:flutter/material.dart';
