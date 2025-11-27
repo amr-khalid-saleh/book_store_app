@@ -79,7 +79,7 @@ class VolumeInfo {
     this.printType,
     this.categories,
     this.maturityRating,
-    required this.imageLinks,
+    this.imageLinks,
     this.language,
     this.previewLink,
     this.infoLink,
@@ -100,7 +100,9 @@ class VolumeInfo {
           ? json['categories'].cast<String>()
           : [],
       maturityRating: json['maturityRating'],
-      imageLinks: ImageLinks.fromJson(json['imageLinks']),
+      imageLinks: json['imageLinks'] != null
+          ? ImageLinks.fromJson(json['imageLinks'])
+          : null,
       language: json['language'],
       previewLink: json['previewLink'],
       infoLink: json['infoLink'],
@@ -118,7 +120,7 @@ class VolumeInfo {
   String? printType;
   List<String>? categories;
   String? maturityRating;
-  ImageLinks imageLinks;
+  ImageLinks? imageLinks;
   String? language;
   String? previewLink;
   String? infoLink;
@@ -136,7 +138,7 @@ class VolumeInfo {
     map['printType'] = printType;
     map['categories'] = categories;
     map['maturityRating'] = maturityRating;
-    map['imageLinks'] = imageLinks.toJson();
+    map['imageLinks'] = imageLinks?.toJson();
     map['language'] = language;
     map['previewLink'] = previewLink;
     map['infoLink'] = infoLink;

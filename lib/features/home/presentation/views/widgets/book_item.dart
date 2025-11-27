@@ -30,7 +30,9 @@ class BookItem extends StatelessWidget {
               aspectRatio: 2.5 / 4, //width/height
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
-                child: CustomCashedNetworkImage(imageUrl: book.volumeInfo.imageLinks.thumbnail),
+                child: CustomCashedNetworkImage(
+                  imageUrl: book.volumeInfo.imageLinks?.thumbnail ?? '',
+                ),
               ),
             ),
             const SizedBox(width: 30),
@@ -64,7 +66,7 @@ class BookItem extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      BookRating(rating: null,count: null,),
+                      BookRating(rating: null, count: null),
                     ],
                   ),
                 ],

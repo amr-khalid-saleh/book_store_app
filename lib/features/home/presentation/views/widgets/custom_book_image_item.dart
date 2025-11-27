@@ -14,7 +14,7 @@ class CustomBookImageItem extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
         child: CustomCashedNetworkImage(
-          imageUrl: book.volumeInfo.imageLinks.thumbnail,
+          imageUrl: book.volumeInfo.imageLinks?.thumbnail ?? '',
         ),
       ),
     );
