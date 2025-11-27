@@ -23,10 +23,7 @@ class TrendingBookListView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: CustomBookImageItem(
-                    imageUrl:
-                        state.books[index].volumeInfo.imageLinks.thumbnail,
-                  ),
+                  child: CustomBookImageItem(book: state.books[index]),
                 );
               },
             ),

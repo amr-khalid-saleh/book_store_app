@@ -1,13 +1,19 @@
 import 'package:book_store/constants.dart';
 import 'package:book_store/core/utils/app_router.dart';
-import 'package:book_store/core/utils/image_manager.dart';
 import 'package:book_store/core/utils/text_style_manager.dart';
+import 'package:book_store/core/widgets/custom_cashed_network_image.dart';
+import 'package:book_store/features/home/data/models/book_model/book_model.dart';
 import 'package:book_store/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BookItem extends StatelessWidget {
-  const BookItem({super.key});
+  const BookItem({super.key, required this.book});
+
+  final BookModel book;
+
+  //final double rating;
+  //final double price;
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +28,9 @@ class BookItem extends StatelessWidget {
           children: [
             AspectRatio(
               aspectRatio: 2.5 / 4, //width/height
-              child: Container(
-                decoration: BoxDecoration(
-                  image: const DecorationImage(
-                    image: AssetImage(ImageManager.subtleArtOfNotGivingAFuck),
-                    fit: BoxFit.fill,
-                  ),
-                  borderRadius: BorderRadius.circular(8),
-                ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: CustomCashedNetworkImage(imageUrl: book.volumeInfo.imageLinks.thumbnail),
               ),
             ),
             const SizedBox(width: 30),
@@ -40,7 +41,7 @@ class BookItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: Text(
-                      'Subtle Art Of Not Giving A Fuck',
+                      book.volumeInfo.title!,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyleManager.regular20.copyWith(
@@ -49,7 +50,10 @@ class BookItem extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Text('Mark Manson', style: TextStyleManager.regular14),
+                  Text(
+                    book.volumeInfo.authors![0],
+                    style: TextStyleManager.regular14,
+                  ),
                   const SizedBox(height: 4),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,7 +64,7 @@ class BookItem extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      BookRating(),
+                      BookRating(rating: null,count: null,),
                     ],
                   ),
                 ],
