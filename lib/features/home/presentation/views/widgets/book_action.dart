@@ -18,7 +18,7 @@ class BookAction extends StatelessWidget {
               ),
               backgroundColor: Colors.white,
               textColor: Colors.black,
-              text: '129.99\$',
+              text: 'Free',
             ),
           ),
           Expanded(

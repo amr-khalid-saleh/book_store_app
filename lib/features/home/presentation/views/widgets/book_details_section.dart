@@ -1,12 +1,15 @@
 import 'package:book_store/constants.dart';
 import 'package:book_store/core/utils/text_style_manager.dart';
+import 'package:book_store/features/home/data/models/book_model/book_model.dart';
 import 'package:book_store/features/home/presentation/views/widgets/book_action.dart';
 import 'package:book_store/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:book_store/features/home/presentation/views/widgets/custom_book_image_item.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key});
+  const BookDetailsSection({super.key, required this.book});
+
+  final BookModel book;
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +17,11 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.438,
-          child: const CustomBookImageItem(),
+          child: CustomBookImageItem(book: book),
         ),
         const SizedBox(height: 44),
         Text(
-          'Subtle Art Of Not Giving A Fuck',
+          book.volumeInfo.title ?? '',
           textAlign: TextAlign.center,
           style: TextStyleManager.bold24.copyWith(fontFamily: kGTSectraFine),
         ),
@@ -26,7 +29,7 @@ class BookDetailsSection extends StatelessWidget {
         Opacity(
           opacity: 0.7,
           child: Text(
-            'Mark Manson',
+            book.volumeInfo.authors?[0] ?? '',
             style: TextStyleManager.semiBold18.copyWith(
               fontWeight: FontWeight.w500,
               fontStyle: FontStyle.italic,
@@ -34,7 +37,7 @@ class BookDetailsSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        const BookRating(rating: 4.7, count: 354),
+        const BookRating(rating: 2.5, count: 129),
         const SizedBox(height: 38),
         const BookAction(),
       ],
