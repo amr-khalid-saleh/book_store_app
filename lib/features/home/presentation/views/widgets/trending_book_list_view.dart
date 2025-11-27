@@ -1,13 +1,15 @@
+import 'package:book_store/core/utils/app_router.dart';
 import 'package:book_store/core/widgets/custom_circular_indicator.dart';
 import 'package:book_store/core/widgets/custom_error_widget.dart';
+import 'package:book_store/features/home/data/models/book_model/book_model.dart';
 import 'package:book_store/features/home/presentation/view_models/cubits/trending_books_cubit/trending_books_cubit.dart';
 import 'package:book_store/features/home/presentation/views/widgets/custom_book_image_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class TrendingBookListView extends StatelessWidget {
   const TrendingBookListView({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TrendingBooksCubit, TrendingBooksState>(
@@ -23,7 +25,13 @@ class TrendingBookListView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: CustomBookImageItem(book: state.books[index]),
+                  child: GestureDetector(
+                    onTap: (){
+                      GoRouter.of(context).push(AppRouter.kBookDetailsView,extra: state.books[index]);
+
+                    },
+                    child: CustomBookImageItem(book: state.books[index]),
+                  ),
                 );
               },
             ),

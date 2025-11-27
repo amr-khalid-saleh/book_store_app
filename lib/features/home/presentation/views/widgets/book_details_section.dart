@@ -23,6 +23,8 @@ class BookDetailsSection extends StatelessWidget {
         Text(
           book.volumeInfo.title ?? '',
           textAlign: TextAlign.center,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 2,
           style: TextStyleManager.bold24.copyWith(fontFamily: kGTSectraFine),
         ),
         const SizedBox(height: 6),
@@ -30,6 +32,7 @@ class BookDetailsSection extends StatelessWidget {
           opacity: 0.7,
           child: Text(
             book.volumeInfo.authors?[0] ?? '',
+            textAlign: TextAlign.center,
             style: TextStyleManager.semiBold18.copyWith(
               fontWeight: FontWeight.w500,
               fontStyle: FontStyle.italic,
