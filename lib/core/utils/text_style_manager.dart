@@ -21,4 +21,9 @@ abstract class TextStyleManager {
     fontSize: 16,
     fontWeight: FontWeight.w500,
   );
+  static const TextStyle bold20black = TextStyle(
+    color: Colors.black,
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+  );
 }

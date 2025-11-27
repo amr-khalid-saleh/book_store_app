@@ -22,11 +22,12 @@ class BookDetailsViewBody extends StatelessWidget {
               children: [
                 const CustomBookDetailsAppBar(),
                 BookDetailsSection(book: book),
-                const SizedBox(height: 50),
-                const Spacer(flex: 1),
-                const SimilarBooksSection(),
+                const SizedBox(height: 65),
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: const SimilarBooksSection(),
+                ),
                 const SizedBox(height: 40),
-                const Spacer(flex: 16),
               ],
             ),
           ),

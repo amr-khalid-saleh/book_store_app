@@ -19,7 +19,7 @@ class BookItem extends StatelessWidget {
         GoRouter.of(context).push(AppRouter.kBookDetailsView, extra: book);
       },
       child: SizedBox(
-        height: 124,
+        height: 130,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -35,6 +35,7 @@ class BookItem extends StatelessWidget {
             const SizedBox(width: 30),
             Expanded(
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
@@ -46,7 +47,8 @@ class BookItem extends StatelessWidget {
                       book.volumeInfo.title ?? 'Unknown Title',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyleManager.regular20.copyWith(
+                      style: TextStyleManager.semiBold18.copyWith(
+                        fontWeight: FontWeight.w500,
                         fontFamily: kGTSectraFine,
                       ),
                     ),
@@ -65,7 +67,7 @@ class BookItem extends StatelessWidget {
                     children: [
                       Text(
                         'Free',
-                        style: TextStyleManager.regular20.copyWith(
+                        style: TextStyleManager.medium16.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
                       ),

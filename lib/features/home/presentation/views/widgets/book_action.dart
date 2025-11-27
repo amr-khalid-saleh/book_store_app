@@ -1,3 +1,4 @@
+import 'package:book_store/core/utils/text_style_manager.dart';
 import 'package:book_store/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -30,10 +31,30 @@ class BookAction extends StatelessWidget {
           Expanded(
             child: CustomButton(
               onPressed: () {
-               /* Navigator.of(context).push(
-                  WebViewWidget(controller: webViewController)
-                      as Route<Object?>,
-                );*/
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => Scaffold(
+                      appBar: AppBar(
+                        backgroundColor: Colors.white,
+                        centerTitle: true,
+                        title: const Text(
+                          'Preview',
+                          style: TextStyleManager.bold20black
+                        ),
+                        leading: IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.black,
+                              size: 24,
+                            )),
+                      ),
+                      body: WebViewWidget(controller: webViewController),
+                    ),
+                  ),
+                );
               },
               borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(16),
