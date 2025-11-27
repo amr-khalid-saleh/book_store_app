@@ -17,7 +17,7 @@ class HomeRepoImpl implements HomeRepo {
     try {
       var data = await apiServices.get(
         url:
-            'https://www.googleapis.com/books/v1/volumes?Filtering=free-ebooks&Sorting=newest&q=subject:general',
+            'https://www.googleapis.com/books/v1/volumes?Filtering=free-ebooks&Sorting=newest&q=general',
       );
       List<BookModel> booksList = [];
       for (var item in data['items']) {
@@ -38,7 +38,7 @@ class HomeRepoImpl implements HomeRepo {
     try {
       var data = await apiServices.get(
         url:
-            'https://www.googleapis.com/books/v1/volumes?Filtering=free-ebooks&q=subject:general',
+            'https://www.googleapis.com/books/v1/volumes?Filtering=free-ebooks&q=general',
       );
       List<BookModel> booksList = [];
       for (var item in data['items']) {

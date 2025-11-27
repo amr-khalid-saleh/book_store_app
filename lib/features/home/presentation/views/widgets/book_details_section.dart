@@ -21,7 +21,7 @@ class BookDetailsSection extends StatelessWidget {
         ),
         const SizedBox(height: 44),
         Text(
-          book.volumeInfo.title ?? '',
+          book.volumeInfo.title ?? 'Unknown title',
           textAlign: TextAlign.center,
           overflow: TextOverflow.ellipsis,
           maxLines: 2,
@@ -31,7 +31,8 @@ class BookDetailsSection extends StatelessWidget {
         Opacity(
           opacity: 0.7,
           child: Text(
-            book.volumeInfo.authors?[0] ?? '',
+            (book.volumeInfo.authors?.isNotEmpty ?? false) ? book
+                .volumeInfo.authors![0] : 'Unknown Author',
             textAlign: TextAlign.center,
             style: TextStyleManager.semiBold18.copyWith(
               fontWeight: FontWeight.w500,
@@ -42,7 +43,7 @@ class BookDetailsSection extends StatelessWidget {
         const SizedBox(height: 10),
         const BookRating(rating: 2.5, count: 129),
         const SizedBox(height: 38),
-        const BookAction(),
+        BookAction(url: book.volumeInfo.previewLink??'',),
       ],
     );
   }

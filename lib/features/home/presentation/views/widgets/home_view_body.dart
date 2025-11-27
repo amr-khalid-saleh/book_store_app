@@ -27,16 +27,21 @@ class HomeViewBody extends StatelessWidget {
               const SizedBox(height: 44),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.0),
-                child: Text('General Books', style: TextStyleManager.semiBold18),
+                child: Text(
+                  'General Books',
+                  style: TextStyleManager.semiBold18,
+                ),
               ),
               const SizedBox(height: 20),
             ],
           ),
         ),
         const SliverToBoxAdapter(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.0),
-            child: GeneralBooksListView(),
+          child: Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.0),
+              child: GeneralBooksListView(),
+            ),
           ),
         ),
       ],

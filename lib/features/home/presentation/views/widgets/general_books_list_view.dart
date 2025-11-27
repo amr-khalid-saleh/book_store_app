@@ -14,7 +14,6 @@ class GeneralBooksListView extends StatelessWidget {
       builder: (context, state) {
         if (state is GeneralBooksSuccess) {
           return ListView.builder(
-            //to can take height of children
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             padding: EdgeInsets.zero,

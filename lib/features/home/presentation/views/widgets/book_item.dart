@@ -16,7 +16,7 @@ class BookItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetailsView,extra: book);
+        GoRouter.of(context).push(AppRouter.kBookDetailsView, extra: book);
       },
       child: SizedBox(
         height: 124,
@@ -38,9 +38,12 @@ class BookItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.5,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width / 2,
                     child: Text(
-                      book.volumeInfo.title??'',
+                      book.volumeInfo.title ?? 'Unknown Title',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyleManager.regular20.copyWith(
@@ -50,7 +53,10 @@ class BookItem extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    book.volumeInfo.authors?[0]??'',
+                    (book.volumeInfo.authors?.isNotEmpty ?? false) ? book
+                        .volumeInfo.authors![0] : 'Unknown Author',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyleManager.regular14,
                   ),
                   const SizedBox(height: 4),
