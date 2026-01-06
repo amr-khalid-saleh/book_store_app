@@ -1,7 +1,6 @@
 import 'package:book_store/features/home/data/models/book_model/book_model.dart';
 import 'package:book_store/features/home/data/repos/home_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 part 'similar_books_state.dart';
 
 class SimilarBooksCubit extends Cubit<SimilarBooksState> {
