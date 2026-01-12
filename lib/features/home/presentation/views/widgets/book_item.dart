@@ -1,4 +1,4 @@
-import 'package:book_store/constants.dart';
+import 'package:book_store/core/constants/constants.dart';
 import 'package:book_store/core/utils/app_router.dart';
 import 'package:book_store/core/utils/text_style_manager.dart';
 import 'package:book_store/core/widgets/custom_cashed_network_image.dart';

@@ -1,4 +1,4 @@
-import 'package:book_store/constants.dart';
+import 'package:book_store/core/constants/constants.dart';
 import 'package:book_store/core/utils/text_style_manager.dart';
 import 'package:book_store/features/home/data/models/book_model/book_model.dart';
 import 'package:book_store/features/home/presentation/views/widgets/book_action.dart';

@@ -1,4 +1,4 @@
-import 'package:book_store/constants.dart';
+import 'package:book_store/core/constants/constants.dart';
 import 'package:book_store/core/utils/app_router.dart';
 import 'package:book_store/core/utils/service_locator.dart';
 import 'package:book_store/features/home/data/repos/home_repo_impl.dart';
