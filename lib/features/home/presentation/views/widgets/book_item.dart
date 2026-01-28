@@ -33,49 +33,47 @@ class BookItem extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 30),
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width / 2,
-                    child: Text(
-                      book.volumeInfo.title ?? 'Unknown Title',
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyleManager.semiBold18.copyWith(
-                        fontWeight: FontWeight.w500,
-                        fontFamily: kGTSectraFine,
-                      ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width / 2,
+                  child: Text(
+                    book.volumeInfo.title ?? 'Unknown Title',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyleManager.semiBold18.copyWith(
+                      fontWeight: FontWeight.w500,
+                      fontFamily: kGTSectraFine,
                     ),
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    (book.volumeInfo.authors?.isNotEmpty ?? false) ? book
-                        .volumeInfo.authors![0] : 'Unknown Author',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyleManager.regular14,
-                  ),
-                  const SizedBox(height: 4),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Free',
-                        style: TextStyleManager.medium16.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  (book.volumeInfo.authors?.isNotEmpty ?? false) ? book
+                      .volumeInfo.authors![0] : 'Unknown Author',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyleManager.regular14,
+                ),
+                const SizedBox(height: 4),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Free',
+                      style: TextStyleManager.medium16.copyWith(
+                        fontWeight: FontWeight.w700,
                       ),
-                      BookRating(rating: 0, count: 0),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                    BookRating(rating: 0, count: 0),
+                  ],
+                ),
+              ],
             ),
           ],
         ),

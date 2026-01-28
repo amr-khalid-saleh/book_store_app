@@ -17,53 +17,49 @@ class BookAction extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         children: [
-          const Expanded(
-            child: CustomButton(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16),
-                bottomLeft: Radius.circular(16),
-              ),
-              backgroundColor: Colors.white,
-              textColor: Colors.black,
-              text: 'Free',
+          CustomButton(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(16),
+              bottomLeft: Radius.circular(16),
             ),
+            backgroundColor: Colors.white,
+            textColor: Colors.black,
+            text: 'Free',
           ),
-          Expanded(
-            child: CustomButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => Scaffold(
-                      appBar: AppBar(
-                        backgroundColor: Colors.white,
-                        centerTitle: true,
-                        title: const Text(
-                          'Preview',
-                          style: TextStyleManager.bold20black
-                        ),
-                        leading: IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: const Icon(
-                              Icons.arrow_back,
-                              color: Colors.black,
-                              size: 24,
-                            )),
+          CustomButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Scaffold(
+                    appBar: AppBar(
+                      backgroundColor: Colors.white,
+                      centerTitle: true,
+                      title: const Text(
+                        'Preview',
+                        style: TextStyleManager.bold20black
                       ),
-                      body: WebViewWidget(controller: webViewController),
+                      leading: IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(
+                            Icons.arrow_back,
+                            color: Colors.black,
+                            size: 24,
+                          )),
                     ),
+                    body: WebViewWidget(controller: webViewController),
                   ),
-                );
-              },
-              borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(16),
-                bottomRight: Radius.circular(16),
-              ),
-              backgroundColor: const Color(0xffEF8262),
-              textColor: Colors.white,
-              text: 'Free Preview',
+                ),
+              );
+            },
+            borderRadius: const BorderRadius.only(
+              topRight: Radius.circular(16),
+              bottomRight: Radius.circular(16),
             ),
+            backgroundColor: const Color(0xffEF8262),
+            textColor: Colors.white,
+            text: 'Free Preview',
           ),
         ],
       ),
