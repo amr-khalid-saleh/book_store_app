@@ -6,8 +6,6 @@ abstract class HomeLocalDataSource {
   List<BookEntity> fetchGeneralBooks();
 
   List<BookEntity> fetchTrendingBooks();
-
-  List<BookEntity> fetchSimilarBooks({required String category});
 }
 
 class HomeLocalDataSourceImpl extends HomeLocalDataSource {
@@ -19,11 +17,7 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
 
   @override
   List<BookEntity> fetchTrendingBooks() {
-    throw UnimplementedError();
-  }
-
-  @override
-  List<BookEntity> fetchSimilarBooks({required String category}) {
-    throw UnimplementedError();
+    var box = Hive.box<BookEntity>(kTrendingBooks);
+    return box.values.toList();
   }
 }

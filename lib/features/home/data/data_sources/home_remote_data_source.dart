@@ -5,9 +5,9 @@ import 'package:book_store/features/home/data/models/book_model/book_model.dart'
 import 'package:book_store/features/home/domain/entities/book_entity.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<List<BookEntity>> fetchTrendingBooks();
-
   Future<List<BookEntity>> fetchGeneralBooks();
+
+  Future<List<BookEntity>> fetchTrendingBooks();
 
   Future<List<BookEntity>> fetchSimilarBooks({required String category});
 }
@@ -34,6 +34,8 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
       endPoint: 'volumes?Filtering=free-ebooks&Sorting=newest &q=trending',
     );
     List<BookEntity> books = getBooksList(data);
+    saveBooksData(books: books, boxName: kTrendingBooks);
+
     return books;
   }
 
@@ -43,6 +45,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
       endPoint: 'volumes?Filtering=free-ebooks&Sorting=newest &q=$category',
     );
     List<BookEntity> books = getBooksList(data);
+
     return books;
   }
 
