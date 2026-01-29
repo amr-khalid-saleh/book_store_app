@@ -2,7 +2,7 @@ import 'package:book_store/core/constants/constants.dart';
 import 'package:book_store/core/utils/app_router.dart';
 import 'package:book_store/core/utils/text_style_manager.dart';
 import 'package:book_store/core/widgets/custom_cashed_network_image.dart';
-import 'package:book_store/features/home/data/models/book_model/book_model.dart';
+import 'package:book_store/features/home/domain/entities/book_entity.dart';
 import 'package:book_store/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -10,7 +10,7 @@ import 'package:go_router/go_router.dart';
 class BookItem extends StatelessWidget {
   const BookItem({super.key, required this.book});
 
-  final BookModel book;
+  final BookEntity book;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class BookItem extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: CustomCashedNetworkImage(
-                  imageUrl: book.volumeInfo.imageLinks?.thumbnail ?? '',
+                  imageUrl: book.image,
                 ),
               ),
             ),
@@ -43,7 +43,7 @@ class BookItem extends StatelessWidget {
                       .size
                       .width / 2,
                   child: Text(
-                    book.volumeInfo.title ?? 'Unknown Title',
+                    book.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyleManager.semiBold18.copyWith(
@@ -54,8 +54,7 @@ class BookItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  (book.volumeInfo.authors?.isNotEmpty ?? false) ? book
-                      .volumeInfo.authors![0] : 'Unknown Author',
+                  book.author,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyleManager.regular14,

@@ -1,9 +1,8 @@
 import 'dart:developer';
-
 import 'package:book_store/core/errors/failure.dart';
 import 'package:book_store/core/utils/api_services.dart';
 import 'package:book_store/features/home/data/models/book_model/book_model.dart';
-import 'package:book_store/features/home/data/repos/home_repo.dart';
+import 'package:book_store/features/home/domain/repos/home_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 

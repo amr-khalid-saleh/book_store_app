@@ -15,7 +15,7 @@ final class GeneralBooksFailure extends GeneralBooksState {
 }
 
 final class GeneralBooksSuccess extends GeneralBooksState {
-  final List<BookModel> books;
+  final List<BookEntity> books;
 
   const GeneralBooksSuccess(this.books);
 }
