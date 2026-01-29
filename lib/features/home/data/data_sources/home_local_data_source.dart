@@ -1,21 +1,24 @@
+import 'package:book_store/core/constants/constants.dart';
 import 'package:book_store/features/home/domain/entities/book_entity.dart';
+import 'package:hive/hive.dart';
 
 abstract class HomeLocalDataSource {
-  List<BookEntity> fetchTrendingBooks();
-
   List<BookEntity> fetchGeneralBooks();
+
+  List<BookEntity> fetchTrendingBooks();
 
   List<BookEntity> fetchSimilarBooks({required String category});
 }
 
-class HomeLocalDataSourceimpl extends HomeLocalDataSource {
+class HomeLocalDataSourceImpl extends HomeLocalDataSource {
   @override
-  List<BookEntity> fetchTrendingBooks() {
-    throw UnimplementedError();
+  List<BookEntity> fetchGeneralBooks() {
+    var box = Hive.box<BookEntity>(kGeneralBooks);
+    return box.values.toList();
   }
 
   @override
-  List<BookEntity> fetchGeneralBooks() {
+  List<BookEntity> fetchTrendingBooks() {
     throw UnimplementedError();
   }
 
