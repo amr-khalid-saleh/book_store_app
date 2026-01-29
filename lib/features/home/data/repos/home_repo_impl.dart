@@ -17,8 +17,12 @@ class HomeRepoImpl implements HomeRepo {
   });
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchGeneralBooks() async {
+  Future<Either<Failure, List< BookEntity>>> fetchGeneralBooks() async {
     try {
+      var cashedBooks = homeLocalDataSource.fetchGeneralBooks();
+      if(cashedBooks.isNotEmpty){
+        return right(cashedBooks);
+      }
       var books = await homeRemoteDataSource.fetchGeneralBooks();
       return Right(books);
     } catch (e) {
@@ -32,6 +36,10 @@ class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<Failure, List<BookEntity>>> fetchTrendingBooks() async {
     try {
+      var cashedBooks = homeLocalDataSource.fetchTrendingBooks();
+      if(cashedBooks.isNotEmpty){
+        return right(cashedBooks);
+      }
       var books = await homeRemoteDataSource.fetchTrendingBooks();
       return Right(books);
     } catch (e) {
