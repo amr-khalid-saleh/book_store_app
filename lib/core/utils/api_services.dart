@@ -6,12 +6,18 @@ class ApiServices {
 
   ApiServices(this._dio);
 
-  Future<Map<String, dynamic>> get({required String endPoint, String? token}) async {
+  Future<Map<String, dynamic>> get({
+    required String endPoint,
+    String? token,
+  }) async {
     Map<String, String> headers = {};
     if (token != null) {
       headers.addAll({'Authorization': 'Bearer $token'});
     }
-    Response response = await _dio.get(kBaseUrl + endPoint, options: Options(headers: headers));
+    Response response = await _dio.get(
+      '$kBaseUrl$endPoint&key=$kApiKey',
+      options: Options(headers: headers),
+    );
     return response.data;
   }
 }

@@ -11,12 +11,18 @@ class BookModel extends BookEntity {
     this.accessInfo,
     this.searchInfo,
   }) : super(
-         bookId: id!,
+         bookId: id ?? '',
          image: volumeInfo.imageLinks?.thumbnail ?? '',
-         title: volumeInfo.title!,
-         author: volumeInfo.authors?.first ?? 'Unknown Author',
-         price: 0.0,
-         rating: 0.0,
+         title: volumeInfo.title ?? 'No Title',
+         author: (volumeInfo.authors?.isNotEmpty ?? false)
+             ? volumeInfo.authors![0]
+             : 'Unknown Author',
+         price: 0,
+         rating: 0,
+         category: (volumeInfo.categories?.isNotEmpty ?? false)
+             ? volumeInfo.categories![0]
+             : 'general',
+         previewLink: volumeInfo.previewLink ?? '',
        );
 
   factory BookModel.fromJson(dynamic json) {
@@ -25,7 +31,7 @@ class BookModel extends BookEntity {
       id: json['id'],
       etag: json['etag'],
       selfLink: json['selfLink'],
-      volumeInfo: VolumeInfo.fromJson(json['volumeInfo']),
+      volumeInfo: VolumeInfo.fromJson(json['volumeInfo'] ?? {}),
       saleInfo: json['saleInfo'] != null
           ? SaleInfo.fromJson(json['saleInfo'])
           : null,
@@ -220,7 +226,7 @@ class VolumeInfo {
   });
 
   VolumeInfo.fromJson(dynamic json) {
-    title = json['title'];
+    title = json['title'] ?? 'unknown title';
     subtitle = json['subtitle'];
     authors = json['authors'] != null ? json['authors'].cast<String>() : [];
     publisher = json['publisher'];

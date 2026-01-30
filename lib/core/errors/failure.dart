@@ -27,21 +27,23 @@ class ServerFailure extends Failure {
       case DioExceptionType.cancel:
         return ServerFailure('Request to ApiServer was Canceled');
       case DioExceptionType.connectionError:
-        return ServerFailure('there was an errors in your internet Connection');
+        return ServerFailure('There was an error in your internet Connection');
       case DioExceptionType.unknown:
-        return ServerFailure('Unknown errors with ApiServer, please try again!');
+        return ServerFailure('Unknown error with ApiServer, please try again!');
     }
   }
 
   factory ServerFailure.fromResponse(int statusCode, dynamic response) {
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-      return ServerFailure(response['errors']['message']);
+      return ServerFailure(response['error']?['message'] ?? 'Authentication or request error');
     } else if (statusCode == 404) {
       return ServerFailure('Your request not found, Please try later!');
     } else if (statusCode == 500) {
-      return ServerFailure('Internal server errors, Please try later!');
+      return ServerFailure('Internal server error, Please try later!');
+    } else if (statusCode == 429) {
+      return ServerFailure('API Quota exceeded or too many requests. Please try again later.');
     } else {
-      return ServerFailure('Opps there was an errors, Please try later!');
+      return ServerFailure('Opps there was an error, Please try later!');
     }
   }
 }

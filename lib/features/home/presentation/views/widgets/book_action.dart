@@ -10,14 +10,12 @@ class BookAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final WebViewController webViewController = WebViewController()
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..loadRequest(Uri.parse(url));
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CustomButton(
+          const CustomButton(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(16),
               bottomLeft: Radius.circular(16),
@@ -28,17 +26,22 @@ class BookAction extends StatelessWidget {
           ),
           CustomButton(
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => Scaffold(
-                    appBar: AppBar(
-                      backgroundColor: Colors.white,
-                      centerTitle: true,
-                      title: const Text(
-                        'Preview',
-                        style: TextStyleManager.bold20black
-                      ),
-                      leading: IconButton(
+              if (url.isNotEmpty ) {
+                final WebViewController webViewController = WebViewController()
+                  ..setJavaScriptMode(JavaScriptMode.unrestricted)
+                  ..loadRequest(Uri.parse(url));
+                
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => Scaffold(
+                      appBar: AppBar(
+                        backgroundColor: Colors.white,
+                        centerTitle: true,
+                        title: const Text(
+                          'Preview',
+                          style: TextStyleManager.bold20black,
+                        ),
+                        leading: IconButton(
                           onPressed: () {
                             Navigator.pop(context);
                           },
@@ -46,12 +49,18 @@ class BookAction extends StatelessWidget {
                             Icons.arrow_back,
                             color: Colors.black,
                             size: 24,
-                          )),
+                          ),
+                        ),
+                      ),
+                      body: WebViewWidget(controller: webViewController),
                     ),
-                    body: WebViewWidget(controller: webViewController),
                   ),
-                ),
-              );
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Preview link not available')),
+                );
+              }
             },
             borderRadius: const BorderRadius.only(
               topRight: Radius.circular(16),

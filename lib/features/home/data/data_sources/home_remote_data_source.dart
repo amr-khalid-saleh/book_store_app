@@ -20,7 +20,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   @override
   Future<List<BookEntity>> fetchGeneralBooks() async {
     var data = await _apiServices.get(
-      endPoint: 'volumes?Filtering=free-ebooks&Sorting=newest &q=general',
+      endPoint: 'volumes?filter=free-ebooks&orderBy=newest&q=general',
     );
     List<BookEntity> books = getBooksList(data);
     saveBooksData(books: books, boxName: kGeneralBooks);
@@ -31,7 +31,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   @override
   Future<List<BookEntity>> fetchTrendingBooks() async {
     var data = await _apiServices.get(
-      endPoint: 'volumes?Filtering=free-ebooks&Sorting=newest &q=trending',
+      endPoint: 'volumes?filter=free-ebooks&orderBy=newest&q=trending',
     );
     List<BookEntity> books = getBooksList(data);
     saveBooksData(books: books, boxName: kTrendingBooks);
@@ -42,7 +42,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   @override
   Future<List<BookEntity>> fetchSimilarBooks({required String category}) async {
     var data = await _apiServices.get(
-      endPoint: 'volumes?Filtering=free-ebooks&Sorting=newest &q=$category',
+      endPoint: 'volumes?filter=free-ebooks&orderBy=newest&q=$category',
     );
     List<BookEntity> books = getBooksList(data);
 
@@ -51,8 +51,10 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
 
   List<BookEntity> getBooksList(Map<String, dynamic> data) {
     List<BookEntity> books = [];
-    for (var books in data['items']) {
-      books.add(BookModel.fromJson(data));
+    if (data['items'] != null) {
+      for (var bookMap in data['items']) {
+        books.add(BookModel.fromJson(bookMap));
+      }
     }
     return books;
   }
