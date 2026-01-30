@@ -10,13 +10,15 @@ final getIt = GetIt.instance;
 
 void setupServiceLocator() {
   Dio dio = Dio();
-  dio.interceptors.add(LogInterceptor(
-    requestBody: true,
-    responseHeader: true,
-    responseBody: true,
-    requestHeader: true,
-    error: true,
-  ));
+  dio.interceptors.add(
+    LogInterceptor(
+      requestBody: true,
+      responseHeader: true,
+      responseBody: true,
+      requestHeader: true,
+      error: true,
+    ),
+  );
   getIt.registerSingleton<ApiServices>(ApiServices(dio));
   getIt.registerLazySingleton<HomeRemoteDataSource>(
     () => HomeRemoteDataSourceImpl(getIt.get<ApiServices>()),

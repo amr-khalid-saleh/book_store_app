@@ -9,8 +9,8 @@ abstract class Failure {
 class ServerFailure extends Failure {
   ServerFailure(super.errMessage);
 
-  factory ServerFailure.fromDioException(DioException dioError) {
-    switch (dioError.type) {
+  factory ServerFailure.fromDioException(DioException dioException) {
+    switch (dioException.type) {
       case DioExceptionType.connectionTimeout:
         return ServerFailure('Connection timeout with ApiServer');
       case DioExceptionType.sendTimeout:
@@ -21,8 +21,8 @@ class ServerFailure extends Failure {
         return ServerFailure('Bad certificate with ApiServer');
       case DioExceptionType.badResponse:
         return ServerFailure.fromResponse(
-          dioError.response!.statusCode!,
-          dioError.response!.data,
+          dioException.response!.statusCode!,
+          dioException.response!.data,
         );
       case DioExceptionType.cancel:
         return ServerFailure('Request to ApiServer was Canceled');
@@ -35,13 +35,17 @@ class ServerFailure extends Failure {
 
   factory ServerFailure.fromResponse(int statusCode, dynamic response) {
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-      return ServerFailure(response['error']?['message'] ?? 'Authentication or request error');
+      return ServerFailure(
+        response['error']?['message'] ?? 'Authentication or request error',
+      );
     } else if (statusCode == 404) {
       return ServerFailure('Your request not found, Please try later!');
-    } else if (statusCode == 500) {
-      return ServerFailure('Internal server error, Please try later!');
     } else if (statusCode == 429) {
-      return ServerFailure('API Quota exceeded or too many requests. Please try again later.');
+      return ServerFailure(
+        'API Quota exceeded or too many requests. Please try again later.',
+      );
+    }   else if (statusCode >= 500) {
+      return ServerFailure('Internal server error, Please try later!');
     } else {
       return ServerFailure('Opps there was an error, Please try later!');
     }
