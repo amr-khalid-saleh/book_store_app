@@ -15,7 +15,7 @@ class TrendingBooksFailure extends TrendingBooksState {
 }
 
 class TrendingBooksSuccess extends TrendingBooksState {
-  final List<BookModel> books;
+  final List<BookEntity> books;
 
   const TrendingBooksSuccess(this.books);
 }

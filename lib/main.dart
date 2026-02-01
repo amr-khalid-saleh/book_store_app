@@ -1,16 +1,23 @@
-import 'package:book_store/constants.dart';
+import 'package:book_store/core/constants/constants.dart';
 import 'package:book_store/core/utils/app_router.dart';
 import 'package:book_store/core/utils/service_locator.dart';
-import 'package:book_store/features/home/data/repos/home_repo_impl.dart';
+import 'package:book_store/features/home/domain/entities/book_entity.dart';
+import 'package:book_store/features/home/domain/repos/home_repo.dart';
 import 'package:book_store/features/home/presentation/view_models/cubits/general_books_cubit/general_books_cubit.dart';
 import 'package:book_store/features/home/presentation/view_models/cubits/trending_books_cubit/trending_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/adapters.dart';
 
-void main() {
+void main() async {
   setupServiceLocator();
+  await Hive.initFlutter();
+  Hive.registerAdapter(BookEntityAdapter());
+  await Hive.openBox<BookEntity>(kGeneralBooks);
+  await Hive.openBox<BookEntity>(kTrendingBooks);
   runApp(const BookStore());
+
 }
 
 class BookStore extends StatelessWidget {
@@ -22,11 +29,11 @@ class BookStore extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) =>
-              GeneralBooksCubit(getIt.get<HomeRepoImpl>())..fetchGeneralBooks(),
+              GeneralBooksCubit(getIt.get<HomeRepo>())..fetchGeneralBooks(),
         ),
         BlocProvider(
           create: (context) =>
-              TrendingBooksCubit(getIt.get<HomeRepoImpl>())
+              TrendingBooksCubit(getIt.get<HomeRepo>())
                 ..fetchTrendingBooks(),
         ),
       ],

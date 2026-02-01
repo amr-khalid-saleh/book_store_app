@@ -1,6 +1,6 @@
-import 'package:book_store/constants.dart';
+import 'package:book_store/core/constants/constants.dart';
 import 'package:book_store/core/utils/text_style_manager.dart';
-import 'package:book_store/features/home/data/models/book_model/book_model.dart';
+import 'package:book_store/features/home/domain/entities/book_entity.dart';
 import 'package:book_store/features/home/presentation/views/widgets/book_action.dart';
 import 'package:book_store/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:book_store/features/home/presentation/views/widgets/custom_book_image_item.dart';
@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 class BookDetailsSection extends StatelessWidget {
   const BookDetailsSection({super.key, required this.book});
 
-  final BookModel book;
+  final BookEntity book;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class BookDetailsSection extends StatelessWidget {
         ),
         const SizedBox(height: 44),
         Text(
-          book.volumeInfo.title ?? 'Unknown title',
+          book.title,
           textAlign: TextAlign.center,
           overflow: TextOverflow.ellipsis,
           maxLines: 2,
@@ -31,8 +31,7 @@ class BookDetailsSection extends StatelessWidget {
         Opacity(
           opacity: 0.7,
           child: Text(
-            (book.volumeInfo.authors?.isNotEmpty ?? false) ? book
-                .volumeInfo.authors![0] : 'Unknown Author',
+            book.author,
             textAlign: TextAlign.center,
             style: TextStyleManager.semiBold18.copyWith(
               fontWeight: FontWeight.w500,
@@ -43,7 +42,7 @@ class BookDetailsSection extends StatelessWidget {
         const SizedBox(height: 10),
         const BookRating(rating: 2.5, count: 129),
         const SizedBox(height: 38),
-        BookAction(url: book.volumeInfo.previewLink??'',),
+        BookAction(url: book.previewLink??'',),
       ],
     );
   }

@@ -1,6 +1,5 @@
-
-import 'package:book_store/features/home/data/models/book_model/book_model.dart';
-import 'package:book_store/features/home/data/repos/home_repo.dart';
+import 'package:book_store/features/home/domain/entities/book_entity.dart';
+import 'package:book_store/features/home/domain/repos/home_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'trending_books_state.dart';
